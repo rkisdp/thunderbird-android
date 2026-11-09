@@ -10,7 +10,7 @@
         android:allowBackup="false"
         android:hasFragileUserData="false"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:usesCleartextTraffic="true"
+        android:usesCleartextTraffic="false"
         android:enableOnBackInvokedCallback="false"
         android:intentMatchingFlags="enforceIntentFilter"
         tools:targetApi="36"
@@ -21,6 +21,8 @@
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustResize"
             android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
             >
 
             <intent-filter>
