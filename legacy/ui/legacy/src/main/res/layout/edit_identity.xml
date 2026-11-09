@@ -78,7 +78,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/edit_identity_email_hint"
-                android:inputType="textEmailAddress"
+                android:inputType="textEmailAddress|textNoSuggestions"
                 android:singleLine="true"
                 />
 
@@ -94,7 +94,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/edit_identity_reply_to_hint"
-                android:inputType="textEmailAddress"
+                android:inputType="textEmailAddress|textNoSuggestions"
                 android:singleLine="true"
                 />
             <!--

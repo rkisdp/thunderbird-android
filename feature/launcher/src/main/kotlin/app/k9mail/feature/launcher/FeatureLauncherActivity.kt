@@ -1,8 +1,10 @@
 package app.k9mail.feature.launcher
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import androidx.activity.compose.setContent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.compose.ui.Modifier
@@ -21,6 +23,20 @@ class FeatureLauncherActivity : BaseActivity() {
                     testTagsAsResourceId = true
                 },
             )
+        }
+        warnIfThirdPartyImeActive()
+    }
+
+    private fun warnIfThirdPartyImeActive() {
+        val currentIme = Settings.Secure.getString(contentResolver, Settings.Secure.DEFAULT_INPUT_METHOD)
+        val systemPackages = setOf("com.android.inputmethod.latin", "com.google.android.inputmethod.latin")
+        val activePackage = currentIme?.substringBefore("/") ?: ""
+        if (activePackage !in systemPackages) {
+            AlertDialog.Builder(this)
+                .setTitle("Security Warning")
+                .setMessage("A third-party keyboard is active. Sensitive data may be at risk.")
+                .setPositiveButton("Continue") { dialog, _ -> dialog.dismiss() }
+                .show()
         }
     }
 
